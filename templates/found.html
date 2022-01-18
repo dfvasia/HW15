@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}ПОИСК В БД{% endblock %}
+{% block content %}
+    <main class="container">
+        <form name="search" class="form_1" method="GET">
+            <input type="search" name="title" class="search__input">
+            <p class="search__results">Найден фильм: {{s.title}}</p>
+            <p class="search__results"> </p>
+            <div class="form_1">
+                <span class="item__username">{{s.title}}</span>
+                <p class="item__descr">{{s.genre}}</p>
+            </div>
+            <div class="item__descr">
+                <p class="item__descr">{{s.description}}</p>
+                <p class="item__descr">Страна: {{s.country}}</p>
+                <p class="item__descr">Дата: {{s.release_year}}</p>
+            </div>
+        </form>
+    </main>
+        {#%endfor %#}
+    </section>
+        </form>
+  </main>
+ {% endblock %}
+{% block ending %}
+        <div class="container">
+          <div class="form_1">
+              <p>НАЧАЛО РАБОТЫ С SQL</p>
+          </div>
+        </div>
+{% endblock %}
