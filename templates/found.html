@@ -5,32 +5,32 @@
         <form name="search" class="form_1" method="GET">
              <input type="search" name="id_animals" list="team_list">
                 <datalist id="team_list">
-                    {% for top10 in sa %}
-                    <option value="{{ top10 }}">{{ top10 }}</option>
+                    {% for top in sa %}
+                    <option value="{{ top }}">{{ top }}</option>
                     {% endfor %}
-            </datalist>
-            <p class="search__results">Найден фильм: {{s.title}}</p>
+                </datalist>
             <p class="search__results"> </p>
+            {% for s in sk %}
+            <p class="search__results">Профиль: {{s.id}}</p>
             <div class="form_1">
-                <span class="item__username">{{s.title}}</span>
-                <p class="item__descr">{{s.genre}}</p>
+                <span class="item__username"> Вид животного: {{s.type}}</span>
+                <p class="item__descr">ИМЯ(Кличка): {{s.name}}</p>
             </div>
             <div class="item__descr">
-                <p class="item__descr">{{s.description}}</p>
-                <p class="item__descr">Страна: {{s.country}}</p>
-                <p class="item__descr">Дата: {{s.release_year}}</p>
+                <p class="item__descr">ПОРОДА: {{s.breed}}</p>
+                <p class="item__descr">ОКРАСКА: {{s.color_1}} - {{s.color_2}}</p>
+                <p class="item__descr">Дата рождения: {{s.birth}}</p>
             </div>
+            {% endfor %}
         </form>
     </main>
-        {#%endfor %#}
-    </section>
-        </form>
-  </main>
  {% endblock %}
 {% block ending %}
+        {% if s is defined %}
         <div class="container">
           <div class="form_1">
               <p>НАЧАЛО РАБОТЫ С SQL</p>
           </div>
         </div>
+        {% endif %}
 {% endblock %}
