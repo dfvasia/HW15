@@ -6,3 +6,4 @@ def open_sqlite3(name_db, query):
         cursor = connection.cursor()
         cursor.execute(query)
     return cursor.fetchall()
+

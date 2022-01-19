@@ -3,7 +3,12 @@
 {% block content %}
     <main class="container">
         <form name="search" class="form_1" method="GET">
-            <input type="search" name="title" class="search__input">
+             <input type="search" name="id_animals" list="team_list">
+                <datalist id="team_list">
+                    {% for top10 in sa %}
+                    <option value="{{ top10 }}">{{ top10 }}</option>
+                    {% endfor %}
+            </datalist>
             <p class="search__results">Найден фильм: {{s.title}}</p>
             <p class="search__results"> </p>
             <div class="form_1">
