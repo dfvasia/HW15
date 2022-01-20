@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}История животного{% endblock %}
+<main class="container">
+{% block content %}
+         <table width="50%" border="1" cellpadding="4" cellspacing="0">
+                <TR>
+                    <TH>номер дела</TH>
+                    <TH>возраст на момент обращения</TH>
+                    <TH>программа</TH>
+                    <TH>статус текущий</TH>
+                    <TH>Дата поступления</TH>
+                </TR>
+            {% for item in items %}
+            <TR>
+                <TD class="form_1">{{item.id}}</TD>
+                <TD class="form_1">{{item.num_date_type}} {{item.date_type}}</TD>
+                <TD class="form_1">{{item.outcome_subtype}}</TD>
+                <TD class="form_1"><{{item.outcome_type}}</TD>
+                <TD class="form_1">{{item.outcome_month}} месяца {{item.outcome_year}} года</TD>
+            </TR>
+            {% endfor %}
+{% endblock %}
+{% block ending %}
+        <div class="container">
+          <div class="form_1">
+              <a href="/"><p>НАЧАЛО РАБОТЫ С SQL</p></a>
+          </div>
+        </div>
+{% endblock %}
+    </main>

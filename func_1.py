@@ -1,7 +1,5 @@
 import sqlite3
 import os
-from flask import Flask, render_template, request, abort, jsonify
-
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 DBNAME = f"{BASEDIR}\\animal.db"
@@ -31,7 +29,7 @@ def first_list_inquiry():
 
 
 def first_inquiry(id_item):
-    dict_t = []
+    dict_fi = []
     query = f"""
         SELECT animal_id, at.animals_type, name, ad.breed_type, colors.color_type, c.color_type, date_of_birth
         FROM animals_cards ac
@@ -43,7 +41,7 @@ def first_inquiry(id_item):
         """
     s = open_sqlite3(DBNAME, query)
     for row in s:
-        dict_t.append({
+        dict_fi.append({
             "id": row[0],
             "type": row[1],
             "name": row[2],
@@ -52,6 +50,29 @@ def first_inquiry(id_item):
             "color_2": row[5],
             "birth": row[6]
         })
+    return dict_fi
+
+
+def second_inquiry(id_item):
+    dict_t = []
+    query = f"""
+    SELECT cp.animal_id, date_num, dt.date_type,  os.outcome_subtype, ot.outcome_type, cp.outcome_month, cp.outcome_year
+    FROM clinic_patient cp
+    LEFT JOIN date_type dt on cp.id_date_type = dt.id_date_type
+    LEFT JOIN outcome_subtype os on cp.id_outcome_subtype =os.id_outcome_subtype
+    LEFT JOIN outcome_type ot on cp.id_outcome_type=ot.id_outcome_type
+    WHERE cp.animal_id='{id_item}'
+    """
+    s = open_sqlite3(DBNAME, query)
+    for row in s:
+        dict_t.append({
+            "id": row[0],
+            "num_date_type": row[1],
+            "date_type": row[2],
+            "outcome_subtype": row[3],
+            "outcome_type": row[4],
+            "outcome_month": row[5],
+            "outcome_year": row[6]
+        })
     print(dict_t)
     return dict_t
-

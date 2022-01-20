@@ -11,7 +11,7 @@
                 </datalist>
             <p class="search__results"> </p>
             {% for s in sk %}
-            <p class="search__results">Профиль: {{s.id}}</p>
+            <a href="/patient/{{s.id}}"><p class="search__results">Профиль: {{s.id}}</p></a>
             <div class="form_1">
                 <span class="item__username"> Вид животного: {{s.type}}</span>
                 <p class="item__descr">ИМЯ(Кличка): {{s.name}}</p>
@@ -26,11 +26,9 @@
     </main>
  {% endblock %}
 {% block ending %}
-        {% if s is defined %}
         <div class="container">
           <div class="form_1">
               <p>НАЧАЛО РАБОТЫ С SQL</p>
           </div>
         </div>
-        {% endif %}
 {% endblock %}

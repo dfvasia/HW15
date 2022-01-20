@@ -167,12 +167,17 @@ SELECT animal_id, at.animals_type, name, ad.breed_type, colors.color_type, c.col
     LEFT JOIN animals_breed ad on ac.id_breed =ad.id_breed
     LEFT JOIN colors on ac.id_color_1=colors.id_colors
     LEFT JOIN colors c on ac.id_color_2=c.id_colors
-    WHERE ac.animal_id='A691445'
+    WHERE ac.animal_id='A691445';
 
 SELECT DISTINCT animal_id
-        FROM animals_cards ac
-        WHERE animal_id IS NOT NULL
+    FROM animals_cards ac
+    WHERE animal_id IS NOT NULL;
 
-
+SELECT animal_id, date_num, dt.date_type,  os.outcome_subtype, ot.outcome_type, outcome_month,outcome_year
+    FROM clinic_patient cp
+    LEFT JOIN date_type dt on cp.id_date_type = dt.id_date_type
+    LEFT JOIN outcome_subtype os on cp.id_outcome_subtype =os.id_outcome_subtype
+    LEFT JOIN outcome_type ot on cp.id_outcome_type=ot.id_outcome_type
+    WHERE cp.animal_id='{id_item}'
 
 
